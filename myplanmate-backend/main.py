@@ -23,19 +23,20 @@ from dotenv import load_dotenv
 load_dotenv()
 
 SUPABASE_URL      = os.getenv("SUPABASE_URL")
-SUPABASE_KEY      = os.getenv("SUPABASE_SERVICE_KEY")
+# SUPABASE_KEY      = os.getenv("SUPABASE_SERVICE_KEY")
+SUPABASE_PUBLISHABLE_KEY = os.getenv("SUPABASE_PUBLISHABLE_KEY")
 JWT_SECRET        = os.getenv("JWT_SECRET", "change-me-in-production")
 FRONTEND_URL      = os.getenv("FRONTEND_URL", "http://localhost:5173")
 
 print("SUPABASE_URL =", SUPABASE_URL)
-print("KEY EXISTS =", bool(SUPABASE_KEY))
-print("KEY START =", SUPABASE_KEY[:15] if SUPABASE_KEY else None)
+print("SUPABASE_PUBLISHABLE_KEY EXISTS =", bool(SUPABASE_PUBLISHABLE_KEY))
+print("SUPABASE_PUBLISHABLE_KEY START =", SUPABASE_PUBLISHABLE_KEY[:15] if SUPABASE_PUBLISHABLE_KEY else None)
 
-if not SUPABASE_URL or not SUPABASE_KEY:
-    raise RuntimeError("SUPABASE_URL and SUPABASE_SERVICE_KEY must be set in .env")
+if not SUPABASE_URL or not SUPABASE_PUBLISHABLE_KEY:
+    raise RuntimeError("SUPABASE_URL and SUPABASE_PUBLISHABLE_KEY must be set in .env")
 
 # ── Supabase client ──────────────────────────────────────────
-supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+supabase: Client = create_client(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY)
 
 # ── FastAPI app ──────────────────────────────────────────────
 app = FastAPI(
