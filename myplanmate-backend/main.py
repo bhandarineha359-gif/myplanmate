@@ -23,7 +23,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 SUPABASE_URL      = os.getenv("SUPABASE_URL")
-SUPABASE_KEY      = os.getenv("SUPABASE_SERVICE_KEY")
+# SUPABASE_KEY      = os.getenv("SUPABASE_SERVICE_KEY")
+SUPABASE_KEY = os.getenv("SUPABASE_PUBLISHABLE_KEY")
 # SUPABASE_PUBLISHABLE_KEY = os.getenv("SUPABASE_PUBLISHABLE_KEY")
 JWT_SECRET        = os.getenv("JWT_SECRET", "change-me-in-production")
 FRONTEND_URL      = os.getenv("FRONTEND_URL", "http://localhost:5173")
