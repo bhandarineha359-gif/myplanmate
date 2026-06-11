@@ -29,14 +29,14 @@ JWT_SECRET        = os.getenv("JWT_SECRET", "change-me-in-production")
 FRONTEND_URL      = os.getenv("FRONTEND_URL", "http://localhost:5173")
 
 print("SUPABASE_URL =", SUPABASE_URL)
-print("SUPABASE_PUBLISHABLE_KEY EXISTS =", bool(SUPABASE_PUBLISHABLE_KEY))
-print("SUPABASE_PUBLISHABLE_KEY START =", SUPABASE_PUBLISHABLE_KEY[:15] if SUPABASE_PUBLISHABLE_KEY else None)
+print("SUPABASE_KEY EXISTS =", bool(SUPABASE_KEY))
+print("SUPABASE_KEY START =", SUPABASE_KEY[:15] if SUPABASE_KEY else None)
 
-if not SUPABASE_URL or not SUPABASE_PUBLISHABLE_KEY:
-    raise RuntimeError("SUPABASE_URL and SUPABASE_PUBLISHABLE_KEY must be set in .env")
+if not SUPABASE_URL or not SUPABASE_KEY:
+    raise RuntimeError("SUPABASE_URL and SUPABASE_KEY must be set in .env")
 
 # ── Supabase client ──────────────────────────────────────────
-supabase: Client = create_client(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY)
+supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 # ── FastAPI app ──────────────────────────────────────────────
 app = FastAPI(
