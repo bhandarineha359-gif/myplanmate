@@ -37,7 +37,12 @@ if not SUPABASE_URL or not SUPABASE_KEY:
     raise RuntimeError("SUPABASE_URL and SUPABASE_KEY must be set in .env")
 
 # ── Supabase client ──────────────────────────────────────────
-supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+try:
+    supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+    print("Supabase client created successfully")
+except Exception as e:
+    print("Supabase creation failed:", repr(e))
+    raise
 
 # ── FastAPI app ──────────────────────────────────────────────
 app = FastAPI(
