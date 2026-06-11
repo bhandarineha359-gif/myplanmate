@@ -29,8 +29,8 @@ JWT_SECRET        = os.getenv("JWT_SECRET", "change-me-in-production")
 FRONTEND_URL      = os.getenv("FRONTEND_URL", "http://localhost:5173")
 
 print("SUPABASE_URL =", SUPABASE_URL)
-print("SUPABASE_KEY EXISTS =", bool(SUPABASE_KEY))
-print("SUPABASE_KEY START =", SUPABASE_KEY[:15] if SUPABASE_KEY else None)
+print("SUPABASE_URL =", bool(SUPABASE_URL))
+print("SUPABASE_KEY =", bool(SUPABASE_KEY))
 
 if not SUPABASE_URL or not SUPABASE_KEY:
     raise RuntimeError("SUPABASE_URL and SUPABASE_KEY must be set in .env")
